@@ -5,7 +5,7 @@ import json, math, os, re, shutil, subprocess, tkinter as tk, webbrowser
 from pathlib import Path
 from tkinter import messagebox, ttk
 
-APP_NAME, VERSION = "WarmSlider", "1.0.3"
+APP_NAME, VERSION = "WarmSlider", "1.0.4"
 DONATION_URL = "https://buymeacoffee.com/aadityabanwari"
 CONFIG_HOME = Path(os.environ.get("SNAP_USER_DATA", Path.home() / ".config"))
 CONFIG_FILE = CONFIG_HOME / "warmslider" / "settings.json"
