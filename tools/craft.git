@@ -1,0 +1,5 @@
+#!/bin/sh
+# Snapcraft's extracted runtime otherwise passes incompatible library paths to
+# the host git binary. Remove only that runtime override before delegating.
+unset LD_LIBRARY_PATH
+exec /usr/bin/git "$@"
