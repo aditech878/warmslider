@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WarmSlider
+Comment=Adjust screen warmth and brightness
+Exec=warmslider
+Icon=warmslider
+Terminal=false
+Categories=Utility;
+Keywords=night;light;warmth;temperature;brightness;display;
+StartupNotify=true

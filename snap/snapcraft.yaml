@@ -1,0 +1,39 @@
+name: warmslider
+title: WarmSlider
+version: '1.0.0'
+summary: Adjust screen warmth and brightness
+description: |
+  WarmSlider is a lightweight display comfort utility. Adjust color temperature
+  from a warm 2500 K to a neutral 6500 K and reduce display brightness with
+  simple live sliders. It supports connected X11 displays and integrates with
+  GNOME's native night-light service on Wayland.
+
+  WarmSlider is free, open source, and does not collect user data.
+license: MIT
+website: https://github.com/aditech878/warmslider
+source-code: https://github.com/aditech878/warmslider
+issues: https://github.com/aditech878/warmslider/issues
+base: core22
+grade: stable
+confinement: strict
+
+apps:
+  warmslider:
+    command: bin/warmslider
+    desktop: share/applications/warmslider.desktop
+    plugs: [desktop, desktop-legacy, gsettings, unity7, wayland, x11]
+
+parts:
+  warmslider:
+    plugin: dump
+    source: .
+    stage-packages: [python3-tk, x11-xserver-utils]
+    organize:
+      night_light.py: lib/warmslider/night_light.py
+      warmslider.desktop: share/applications/warmslider.desktop
+      icon.png: share/icons/hicolor/512x512/apps/warmslider.png
+    override-build: |
+      craftctl default
+      mkdir -p "$CRAFT_PART_INSTALL/bin"
+      printf '#!/bin/sh\nexec python3 "$SNAP/lib/warmslider/night_light.py" "$@"\n' > "$CRAFT_PART_INSTALL/bin/warmslider"
+      chmod +x "$CRAFT_PART_INSTALL/bin/warmslider"
