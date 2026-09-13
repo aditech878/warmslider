@@ -1,5 +1,5 @@
 *.snap
-snapcraft-*_BUILDING.txt
+snapcraft-*.txt
 __pycache__/
 parts/
 prime/
