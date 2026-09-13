@@ -1,6 +1,6 @@
 name: warmslider
 title: WarmSlider
-version: '1.0.2'
+version: '1.0.3'
 summary: Adjust screen warmth and brightness
 description: |
   WarmSlider is a lightweight display comfort utility. Adjust color temperature
@@ -24,7 +24,7 @@ apps:
     plugs: [desktop, desktop-legacy, gsettings, unity7, wayland, x11]
     environment:
       PYTHONPATH: $SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload:$SNAP/usr/lib/python3/dist-packages
-      LD_LIBRARY_PATH: $SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu
+      LD_LIBRARY_PATH: $SNAP/usr/lib:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/x86_64-linux-gnu
 
 parts:
   warmslider:
