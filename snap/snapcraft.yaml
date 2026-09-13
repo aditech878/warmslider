@@ -1,6 +1,6 @@
 name: warmslider
 title: WarmSlider
-version: '1.0.0'
+version: '1.0.1'
 summary: Adjust screen warmth and brightness
 description: |
   WarmSlider is a lightweight display comfort utility. Adjust color temperature
@@ -22,6 +22,9 @@ apps:
     command: bin/warmslider
     desktop: share/applications/warmslider.desktop
     plugs: [desktop, desktop-legacy, gsettings, unity7, wayland, x11]
+    environment:
+      PYTHONPATH: $SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3/dist-packages
+      LD_LIBRARY_PATH: $SNAP/lib/$SNAPCRAFT_ARCH_TRIPLET:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
 
 parts:
   warmslider:
@@ -35,5 +38,5 @@ parts:
     override-build: |
       craftctl default
       mkdir -p "$CRAFT_PART_INSTALL/bin"
-      printf '#!/bin/sh\nexec python3 "$SNAP/lib/warmslider/night_light.py" "$@"\n' > "$CRAFT_PART_INSTALL/bin/warmslider"
+      printf '#!/bin/sh\nexec /usr/bin/python3.10 "$SNAP/lib/warmslider/night_light.py" "$@"\n' > "$CRAFT_PART_INSTALL/bin/warmslider"
       chmod +x "$CRAFT_PART_INSTALL/bin/warmslider"
